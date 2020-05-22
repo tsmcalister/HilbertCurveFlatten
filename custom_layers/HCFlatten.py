@@ -41,6 +41,7 @@ class HCFlatten(layers.Layer):
 
         return outputs
 
+
 if __name__ == "__main__":
     shape = (10,256,256,1)
     input = tf.reshape(tf.range(0, 256**2*10, 1), shape)

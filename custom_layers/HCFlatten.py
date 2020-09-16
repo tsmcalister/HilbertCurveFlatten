@@ -21,11 +21,11 @@ class HCFlatten(layers.Layer):
         self.side_length = input_shape[1]
         self.channel_dim = input_shape[-1]
         self.place_holder = tf.ones((self.side_length ** 2, 1))
-        self.idxs = []
+        self.idxs = np.zeros(self.side_length**2, dtype='int')
         for i in range(self.side_length**2):
             x, y = self.hc.coordinates_from_distance(i)
             idx = x+self.side_length*y
-            self.idxs.append(idx)
+            self.idxs[i] = idx
 
     def compute_output_shape(self, input_shape):
         return (input_shape[0], self.side_length**2, 1)
